@@ -5,19 +5,14 @@ import './App.scss'
 
 import HomePage from './pages/homepage/homepage.component'
 
-const HatsPage = () => {
-  return (
-    <div>
-      <h1>HATS page</h1>
-    </div>
-  )
-}
+import ShopPage from './pages/shop/shop.component'
+
 function App () {
   return (
     <div>
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/shop/hats' component={HatsPage} />
+        <Route path='/shop' component={ShopPage} />
       </Switch>
     </div>
   )
