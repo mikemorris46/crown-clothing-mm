@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import './App.scss'
 
-import { auth } from 'firebase/firebase.utils'
+import { auth, createUserProfileDocument } from 'firebase/firebase.utils'
 
 import HomePage from './pages/homepage/homepage.component'
 
@@ -21,10 +21,23 @@ class App extends React.Component {
   unsubscribeFromAuth = null
 
   componentDidMount () {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user })
-      console.log('FB user is', user)
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth)
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        })
+        console.log('Current', this.state)
+      }
+      this.setState({ currentUser: userAuth })
     })
+    console.log('current2', this.state)
   }
 
   componentWillUnmount () {
