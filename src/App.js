@@ -33,11 +33,9 @@ class App extends React.Component {
             }
           })
         })
-        console.log('Current', this.state)
       }
       this.setState({ currentUser: userAuth })
     })
-    console.log('current2', this.state)
   }
 
   componentWillUnmount () {
