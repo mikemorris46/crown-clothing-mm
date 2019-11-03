@@ -2,6 +2,10 @@
   "name": "crown-clothing-mm",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.10.0"
+  },
   "dependencies": {
     "firebase": "^7.2.0",
     "node-sass": "^4.12.0",
