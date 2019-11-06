@@ -5,8 +5,6 @@ import CollectionsOverview from 'components/collections-overview/collections-ove
 
 import CollectionPage from 'pages/collection/collection.component'
 
-import './shop.styles.scss'
-
 const ShopPage = ({ match }) => {
   return (
     <div className='shop-page'>
